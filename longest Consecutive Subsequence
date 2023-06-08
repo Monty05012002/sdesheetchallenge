@@ -1,0 +1,21 @@
+#include <bits/stdc++.h>
+
+int lengthOfLongestConsecutiveSequence(vector<int> &arr, int n) {
+    // Write your code here.
+    unordered_set<int>s;
+    int maxi=1;
+    for(auto it:arr)
+    s.insert(it);
+    for(auto it:arr){
+        if(s.find(it-1)==s.end()){
+            int x=it;
+            int count=1;
+            while(s.find(x+1)!=s.end()){
+                count++;
+                x=x+1;
+            }
+            maxi=max(maxi,count);
+        }
+    }
+    return maxi;
+}
